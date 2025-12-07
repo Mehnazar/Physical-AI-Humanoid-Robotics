@@ -1,0 +1,269 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://physical-ai-book/schemas/assessment.json",
+  "title": "Assessment Schema for Physical AI & Humanoid Robotics Book",
+  "description": "JSON schema defining the structure for quizzes, exercises, and project assessments",
+
+  "definitions": {
+    "QuestionItem": {
+      "type": "object",
+      "required": ["question_id", "question_text", "question_type", "correct_answer", "explanation", "learning_outcome_ref", "difficulty"],
+      "properties": {
+        "question_id": {
+          "type": "string",
+          "pattern": "^q-[a-z0-9-]+$",
+          "description": "Unique identifier for the question",
+          "examples": ["q-ros2-topics-01", "q-isaac-perception-05"]
+        },
+        "question_text": {
+          "type": "string",
+          "minLength": 10,
+          "description": "The question itself, clearly worded",
+          "examples": ["Which ROS 2 communication pattern is best for requesting one-time data from another node?"]
+        },
+        "question_type": {
+          "type": "string",
+          "enum": ["multiple_choice", "true_false", "coding_exercise", "short_answer"],
+          "description": "Format of the question"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2,
+          "maxItems": 6,
+          "description": "Answer choices for multiple_choice questions"
+        },
+        "correct_answer": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "description": "0-based index of correct option (for multiple_choice)"
+            },
+            {
+              "type": "string",
+              "description": "Correct answer text (for true_false, short_answer) or code reference (for coding_exercise)"
+            }
+          ]
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 20,
+          "description": "2-3 sentence explanation of why this answer is correct and others are not"
+        },
+        "learning_outcome_ref": {
+          "type": "string",
+          "description": "Which learning outcome from the module this question assesses"
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": ["beginner", "intermediate", "advanced"],
+          "description": "Difficulty level of the question"
+        },
+        "hints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional hints for coding exercises"
+        },
+        "code_template": {
+          "type": "string",
+          "description": "Starter code for coding_exercise questions"
+        },
+        "test_cases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "input": {"type": "string"},
+              "expected_output": {"type": "string"}
+            }
+          },
+          "description": "Test cases for coding_exercise questions"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"question_type": {"const": "multiple_choice"}}
+          },
+          "then": {
+            "required": ["options"]
+          }
+        },
+        {
+          "if": {
+            "properties": {"question_type": {"const": "coding_exercise"}}
+          },
+          "then": {
+            "properties": {
+              "hints": {"minItems": 1},
+              "test_cases": {"minItems": 2}
+            }
+          }
+        }
+      ]
+    },
+
+    "Rubric": {
+      "type": "object",
+      "description": "Grading criteria for project assessments",
+      "patternProperties": {
+        "^[a-z_]+$": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Points allocated to this criterion"
+        }
+      },
+      "additionalProperties": false,
+      "examples": [
+        {
+          "functionality": 40,
+          "code_quality": 30,
+          "documentation": 20,
+          "creativity": 10
+        }
+      ]
+    }
+  },
+
+  "type": "object",
+  "required": ["assessment_id", "module_id", "assessment_type", "estimated_time"],
+  "properties": {
+    "assessment_id": {
+      "type": "string",
+      "pattern": "^(quiz|exercise|project)-[a-z0-9-]+$",
+      "description": "Unique identifier for the assessment",
+      "examples": ["quiz-ros2-fundamentals", "project-capstone-voice-robot"]
+    },
+    "module_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Module this assessment belongs to",
+      "examples": ["ros2", "simulation", "isaac", "vla", "capstone"]
+    },
+    "assessment_type": {
+      "type": "string",
+      "enum": ["quiz", "exercise", "project"],
+      "description": "Type of assessment"
+    },
+    "title": {
+      "type": "string",
+      "description": "Display title for the assessment"
+    },
+    "description": {
+      "type": "string",
+      "description": "Overview of what this assessment covers"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/QuestionItem"
+      },
+      "minItems": 5,
+      "description": "Array of questions (minimum 5 per module per SC-010)"
+    },
+    "rubric": {
+      "$ref": "#/definitions/Rubric",
+      "description": "Grading rubric for project assessments (required if assessment_type is 'project')"
+    },
+    "estimated_time": {
+      "type": "integer",
+      "minimum": 5,
+      "description": "Estimated time to complete in minutes"
+    },
+    "passing_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "default": 70,
+      "description": "Minimum score to pass (percentage)"
+    },
+    "learning_outcomes_assessed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of learning outcomes this assessment covers"
+    }
+  },
+
+  "allOf": [
+    {
+      "if": {
+        "properties": {"assessment_type": {"const": "quiz"}}
+      },
+      "then": {
+        "required": ["questions"],
+        "properties": {
+          "questions": {
+            "minItems": 5
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"assessment_type": {"const": "project"}}
+      },
+      "then": {
+        "required": ["rubric"]
+      }
+    }
+  ],
+
+  "examples": [
+    {
+      "assessment_id": "quiz-ros2-fundamentals",
+      "module_id": "ros2",
+      "assessment_type": "quiz",
+      "title": "ROS 2 Fundamentals Quiz",
+      "description": "Test your understanding of ROS 2 nodes, topics, services, and URDF",
+      "questions": [
+        {
+          "question_id": "q-ros2-001",
+          "question_text": "Which ROS 2 communication pattern is best for requesting one-time data from another node?",
+          "question_type": "multiple_choice",
+          "options": ["Topics", "Services", "Actions", "Parameters"],
+          "correct_answer": 1,
+          "explanation": "Services use a request-response pattern ideal for one-time queries. Topics are for continuous streaming, Actions for long-running tasks with feedback, and Parameters for configuration.",
+          "learning_outcome_ref": "Explain ROS 2 architecture and communication patterns",
+          "difficulty": "beginner"
+        }
+      ],
+      "estimated_time": 20,
+      "passing_score": 70,
+      "learning_outcomes_assessed": [
+        "Explain ROS 2 architecture and communication patterns",
+        "Implement publisher/subscriber nodes in Python",
+        "Create and manipulate URDF robot descriptions"
+      ]
+    },
+    {
+      "assessment_id": "project-capstone-voice-robot",
+      "module_id": "capstone",
+      "assessment_type": "project",
+      "title": "Voice-Controlled Humanoid Robot",
+      "description": "Build an integrated system combining ROS 2, simulation, perception, and VLA to create a voice-controlled humanoid robot",
+      "rubric": {
+        "voice_command_processing": 20,
+        "task_planning_accuracy": 20,
+        "navigation_success": 25,
+        "object_manipulation": 30,
+        "code_quality": 5
+      },
+      "estimated_time": 900,
+      "passing_score": 70,
+      "learning_outcomes_assessed": [
+        "Integrate multiple ROS 2 modules into a complete system",
+        "Implement voice command processing with Whisper",
+        "Use LLM for task planning",
+        "Execute autonomous navigation and manipulation"
+      ]
+    }
+  ]
+}
