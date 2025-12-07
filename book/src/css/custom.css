@@ -1,30 +1,409 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Physical AI & Humanoid Robotics - Professional Theme
+ * Modern, clean design optimized for technical education
  */
 
-/* You can override the default Infima variables here. */
+/* Professional color palette for light mode */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* Primary: Deep blue (professional, trustworthy) */
+  --ifm-color-primary: #2563eb;
+  --ifm-color-primary-dark: #1d4ed8;
+  --ifm-color-primary-darker: #1e40af;
+  --ifm-color-primary-darkest: #1e3a8a;
+  --ifm-color-primary-light: #3b82f6;
+  --ifm-color-primary-lighter: #60a5fa;
+  --ifm-color-primary-lightest: #93c5fd;
+
+  /* Accent colors for different elements */
+  --accent-purple: #7c3aed;
+  --accent-teal: #0d9488;
+  --accent-orange: #f97316;
+  --accent-green: #059669;
+
+  /* Code styling */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-code-background: #f1f5f9;
+  --ifm-code-color: #475569;
+  --docusaurus-highlighted-code-line-bg: rgba(37, 99, 235, 0.1);
+
+  /* Typography */
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-heading-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-line-height-base: 1.7;
+
+  /* Spacing and borders */
+  --ifm-global-radius: 0.5rem;
+  --ifm-button-border-radius: 0.5rem;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Dark mode palette - softer, easier on eyes */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  /* Primary: Lighter blue for better contrast */
+  --ifm-color-primary: #60a5fa;
+  --ifm-color-primary-dark: #3b82f6;
+  --ifm-color-primary-darker: #2563eb;
+  --ifm-color-primary-darkest: #1d4ed8;
+  --ifm-color-primary-light: #93c5fd;
+  --ifm-color-primary-lighter: #bfdbfe;
+  --ifm-color-primary-lightest: #dbeafe;
+
+  /* Accent colors adjusted for dark mode */
+  --accent-purple: #a78bfa;
+  --accent-teal: #2dd4bf;
+  --accent-orange: #fb923c;
+  --accent-green: #34d399;
+
+  /* Dark mode backgrounds - softer blacks */
+  --ifm-background-color: #0f172a;
+  --ifm-background-surface-color: #1e293b;
+  --ifm-font-color-base: #e2e8f0;
+  --ifm-heading-color: #f1f5f9;
+
+  /* Code styling for dark mode */
+  --ifm-code-background: #1e293b;
+  --ifm-code-color: #94a3b8;
+  --docusaurus-highlighted-code-line-bg: rgba(96, 165, 250, 0.15);
+
+  /* Navbar and footer */
+  --ifm-navbar-background-color: #1e293b;
+  --ifm-footer-background-color: #0f172a;
+}
+
+/* Improved typography */
+.markdown h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--ifm-color-primary);
+}
+
+.markdown h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--ifm-color-primary-lighter);
+  padding-bottom: 0.5rem;
+}
+
+.markdown h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Professional button styling */
+.button--primary {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.button--primary:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+[data-theme='dark'] .button--primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+}
+
+[data-theme='dark'] .button--primary:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.4);
+}
+
+/* Clean link styling */
+a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Code block improvements */
+.theme-code-block {
+  border-radius: var(--ifm-global-radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+}
+
+[data-theme='dark'] .theme-code-block {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Inline code */
+code {
+  border-radius: 0.25rem;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+/* Sidebar active state */
+.menu__link--active {
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.1) 0%, transparent 100%);
+  border-left: 3px solid var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.menu__link--active:hover {
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.15) 0%, transparent 100%);
+}
+
+/* Card styling */
+.card {
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ifm-global-radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+  transform: translateY(-2px);
+}
+
+[data-theme='dark'] .card {
+  border-color: #334155;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .card:hover {
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+}
+
+/* Admonitions - educational emphasis */
+.admonition {
+  border-left-width: 4px;
+  border-radius: var(--ifm-global-radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.admonition-note {
+  border-left-color: #2563eb;
+  background-color: rgba(37, 99, 235, 0.05);
+}
+
+.admonition-tip {
+  border-left-color: #059669;
+  background-color: rgba(5, 150, 105, 0.05);
+}
+
+.admonition-info {
+  border-left-color: #0d9488;
+  background-color: rgba(13, 148, 136, 0.05);
+}
+
+.admonition-warning {
+  border-left-color: #f97316;
+  background-color: rgba(249, 115, 22, 0.05);
+}
+
+.admonition-danger {
+  border-left-color: #dc2626;
+  background-color: rgba(220, 38, 38, 0.05);
+}
+
+[data-theme='dark'] .admonition-note {
+  background-color: rgba(96, 165, 250, 0.1);
+}
+
+[data-theme='dark'] .admonition-tip {
+  background-color: rgba(52, 211, 153, 0.1);
+}
+
+[data-theme='dark'] .admonition-info {
+  background-color: rgba(45, 212, 191, 0.1);
+}
+
+[data-theme='dark'] .admonition-warning {
+  background-color: rgba(251, 146, 60, 0.1);
+}
+
+[data-theme='dark'] .admonition-danger {
+  background-color: rgba(248, 113, 113, 0.1);
+}
+
+/* Navbar enhancements */
+.navbar {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+}
+
+.navbar__title {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.navbar__brand:hover {
+  opacity: 0.8;
+}
+
+/* Footer styling */
+.footer {
+  border-top: 1px solid #e2e8f0;
+  padding: 2rem 0;
+}
+
+[data-theme='dark'] .footer {
+  border-top-color: #334155;
+}
+
+/* Scrollbar - subtle and professional */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 6px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: #475569;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Table styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+table thead {
+  background: rgba(37, 99, 235, 0.1);
+}
+
+table th {
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+table td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+[data-theme='dark'] table thead {
+  background: rgba(96, 165, 250, 0.1);
+}
+
+[data-theme='dark'] table td {
+  border-top-color: #334155;
+}
+
+/* Blockquote styling */
+blockquote {
+  border-left: 4px solid var(--ifm-color-primary);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #64748b;
+}
+
+[data-theme='dark'] blockquote {
+  color: #94a3b8;
+}
+
+/* Improve readability */
+.markdown > p,
+.markdown > ul,
+.markdown > ol {
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.markdown ul,
+.markdown ol {
+  padding-left: 2rem;
+}
+
+.markdown li {
+  margin-bottom: 0.5rem;
+}
+
+/* Breadcrumb styling */
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* TOC (Table of Contents) styling */
+.table-of-contents {
+  border-left: 2px solid var(--ifm-color-primary-lighter);
+  padding-left: 1rem;
+}
+
+.table-of-contents li {
+  margin: 0.5rem 0;
+}
+
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Pagination */
+.pagination-nav__link {
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ifm-global-radius);
+  transition: all 0.3s ease;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+}
+
+[data-theme='dark'] .pagination-nav__link {
+  border-color: #334155;
+}
+
+[data-theme='dark'] .pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 2px 8px rgba(96, 165, 250, 0.2);
+}
+
+/* Accessibility improvements */
+:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .footer,
+  .pagination-nav,
+  .table-of-contents {
+    display: none;
+  }
 }
