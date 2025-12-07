@@ -15,14 +15,14 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://wajiz.pk.github.io',
+  url: 'https://mehnazar.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/Physical-AI-Humanoid-Robotics/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Wajiz.pk', // Usually your GitHub org/user name.
+  organizationName: 'Mehnazar', // Usually your GitHub org/user name.
   projectName: 'Physical-AI-Humanoid-Robotics', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -44,7 +44,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/Wajiz.pk/Physical-AI-Humanoid-Robotics/tree/001-physical-ai-book/',
+            'https://github.com/Mehnazar/Physical-AI-Humanoid-Robotics/tree/001-physical-ai-book/',
         },
         blog: false, // Disable blog for this educational book
         theme: {
@@ -80,7 +80,7 @@ const config: Config = {
           label: 'Learn',
         },
         {
-          href: 'https://github.com/Wajiz.pk/Physical-AI-Humanoid-Robotics',
+          href: 'https://github.com/Mehnazar/Physical-AI-Humanoid-Robotics',
           label: 'GitHub',
           position: 'right',
         },
