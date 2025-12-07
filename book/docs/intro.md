@@ -219,14 +219,60 @@ Every chapter follows a consistent 7-part structure (ADR-002):
 
 ---
 
+## Quick Start: Jump to Any Module
+
+Choose your learning path and jump directly to the content:
+
+### 📚 Course Navigation
+
+:::info Getting Started
+**Prerequisites**: [Prerequisites & Setup](/docs/prerequisites)
+**Curriculum**: [13-Week Curriculum](/docs/weekly-breakdown)
+:::
+
+:::tip Module 1: ROS 2 Fundamentals
+**Duration**: Weeks 1-3 | **Level**: Beginner
+**Content**: [Module Overview](/docs/module-ros2/overview) | [Ch 1: Nodes & Architecture](/docs/module-ros2/nodes)
+:::
+
+:::note Module 2: Simulation Environments
+**Duration**: Weeks 4-6 | **Level**: Intermediate
+**Topics**: Webots, Gazebo, Sensor Simulation
+⏳ *Coming soon*
+:::
+
+:::note Module 3: NVIDIA Isaac
+**Duration**: Weeks 7-9 | **Level**: Advanced
+**Topics**: Isaac Sim, vSLAM, Object Detection
+⏳ *Coming soon*
+:::
+
+:::note Module 4: VLA Systems
+**Duration**: Weeks 10-12 | **Level**: Advanced
+**Topics**: Whisper, LLMs, Voice Control
+⏳ *Coming soon*
+:::
+
+:::caution Capstone Project
+**Duration**: Week 13 | **Level**: Integrative
+**Build**: Voice-Controlled Humanoid Robot
+⏳ *Coming soon*
+:::
+
+---
+
 ## Getting Started
 
-### Next Steps
+### Recommended Learning Path
 
-1. **Check Prerequisites**: Read [Prerequisites](/docs/prerequisites) to verify your setup.
-2. **Review Weekly Breakdown**: See the [13-Week Curriculum](/docs/weekly-breakdown) to plan your learning.
-3. **Set Up Your Environment**: Follow the [Quickstart Guide](/specs/001-physical-ai-book/quickstart.md) (5-10 minutes).
-4. **Start Module 1**: Begin with [ROS 2 Fundamentals](/docs/module-ros2/overview).
+**For Complete Beginners**:
+1. ✅ Read [Prerequisites](/docs/prerequisites) and verify your setup
+2. ✅ Review [13-Week Curriculum](/docs/weekly-breakdown) to plan your time
+3. ✅ Start [Module 1: ROS 2 Fundamentals](/docs/module-ros2/overview)
+
+**For Experienced Developers**:
+- **Know ROS 2?** → Skip to Module 2 (Simulation) or Module 4 (VLA)
+- **Need specific skills?** → Use module cards above to jump directly to topics
 
 ### Community & Support
 
