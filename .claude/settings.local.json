@@ -6,7 +6,8 @@
       "Bash(powershell.exe -ExecutionPolicy Bypass -File \".specify/scripts/powershell/check-prerequisites.ps1\" -Json -RequireTasks -IncludeTasks)",
       "Bash(find:*)",
       "Bash(npm install:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(touch:*)"
     ],
     "deny": [],
     "ask": []
