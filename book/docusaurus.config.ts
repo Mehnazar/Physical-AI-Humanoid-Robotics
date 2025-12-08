@@ -129,7 +129,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Engr.Mehnazar Umair. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

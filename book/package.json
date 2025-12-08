@@ -2,6 +2,7 @@
   "name": "book",
   "version": "0.0.0",
   "private": true,
+  "author": "Engr.Mehnazar Umair",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
