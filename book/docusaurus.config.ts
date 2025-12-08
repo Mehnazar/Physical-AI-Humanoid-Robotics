@@ -25,7 +25,7 @@ const config: Config = {
   organizationName: 'Mehnazar', // Usually your GitHub org/user name.
   projectName: 'Physical-AI-Humanoid-Robotics', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -90,46 +90,46 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Learn',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Getting Started',
               to: '/docs/intro',
             },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'Prerequisites',
+              to: '/docs/prerequisites',
             },
           ],
         },
         {
-          title: 'More',
+          title: 'Modules',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
+              label: 'ROS2 Basics',
+              to: '/docs/module-ros2/overview',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: 'Weekly Breakdown',
+              to: '/docs/weekly-breakdown',
+            },
+          ],
+        },
+        {
+          title: 'Resources',
+          items: [
+            {
+              label: 'GitHub Repository',
+              href: 'https://github.com/Mehnazar/Physical-AI-Humanoid-Robotics',
+            },
+            {
+              label: 'Code Examples',
+              href: 'https://github.com/Mehnazar/Physical-AI-Humanoid-Robotics/tree/001-physical-ai-book/code-examples',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

@@ -1,11 +1,31 @@
 .features {
   display: flex;
   align-items: center;
-  padding: 2rem 0;
+  padding: 4rem 0;
   width: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(37, 99, 235, 0.03));
+}
+
+[data-theme='dark'] .features {
+  background: linear-gradient(to bottom, transparent, rgba(96, 165, 250, 0.05));
 }
 
 .featureSvg {
   height: 200px;
   width: 200px;
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.2));
+}
+
+.featureSvg:hover {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 8px 16px rgba(37, 99, 235, 0.4));
+}
+
+[data-theme='dark'] .featureSvg {
+  filter: drop-shadow(0 4px 8px rgba(96, 165, 250, 0.3));
+}
+
+[data-theme='dark'] .featureSvg:hover {
+  filter: drop-shadow(0 8px 16px rgba(96, 165, 250, 0.5));
 }

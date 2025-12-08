@@ -4,15 +4,90 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
+  padding: 6rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #ec4899 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+}
+
+[data-theme='dark'] .heroBanner {
+  background: linear-gradient(135deg, #1e3a8a 0%, #581c87 50%, #9f1239 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heroTitle {
+  font-size: 3.5rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 1.5rem !important;
+  color: white !important;
+  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: -1px;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  margin-bottom: 2.5rem !important;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 2rem;
+    padding: 3rem 1rem;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem !important;
+  }
+
+  .heroSubtitle {
+    font-size: 1.2rem !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .heroTitle {
+    font-size: 2rem !important;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem !important;
   }
 }
 
@@ -20,4 +95,88 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.primaryButton {
+  background: white !important;
+  color: #2563eb !important;
+  border: none !important;
+  font-weight: 700 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+}
+
+.primaryButton:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+  background: #f0f9ff !important;
+}
+
+.secondaryButton {
+  background: transparent !important;
+  color: white !important;
+  border: 2px solid white !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(10px);
+}
+
+.secondaryButton:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Floating animation elements */
+.heroAnimation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floatingElement {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.floatingElement:nth-child(1) {
+  width: 300px;
+  height: 300px;
+  top: -100px;
+  left: -100px;
+  animation: float 20s infinite ease-in-out;
+}
+
+.floatingElement:nth-child(2) {
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  right: -50px;
+  animation: float 15s infinite ease-in-out reverse;
+}
+
+.floatingElement:nth-child(3) {
+  width: 150px;
+  height: 150px;
+  bottom: -50px;
+  left: 30%;
+  animation: float 18s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(180deg);
+  }
 }

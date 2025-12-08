@@ -398,6 +398,174 @@ blockquote {
   outline-offset: 2px;
 }
 
+/* Enhanced button styles with icons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+/* Badge component for labels */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--ifm-color-primary-lighter);
+  color: var(--ifm-color-primary-darkest);
+  margin: 0.25rem;
+}
+
+[data-theme='dark'] .badge {
+  background: var(--ifm-color-primary-darkest);
+  color: var(--ifm-color-primary-lightest);
+}
+
+/* Info boxes for callouts */
+.info-box {
+  padding: 1.5rem;
+  border-radius: var(--ifm-global-radius);
+  border-left: 4px solid var(--ifm-color-primary);
+  background: rgba(37, 99, 235, 0.05);
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.info-box:hover {
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+  transform: translateX(4px);
+}
+
+[data-theme='dark'] .info-box {
+  background: rgba(96, 165, 250, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .info-box:hover {
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+}
+
+/* Progress indicator for reading progress */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed, #ec4899);
+  z-index: 9999;
+  transition: width 0.2s ease;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Interactive list items */
+.markdown ul li,
+.markdown ol li {
+  position: relative;
+  padding-left: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.markdown ul li:hover,
+.markdown ol li:hover {
+  padding-left: 1rem;
+  color: var(--ifm-color-primary);
+}
+
+/* Enhanced code copy button */
+.theme-code-block button {
+  transition: all 0.3s ease;
+}
+
+.theme-code-block button:hover {
+  transform: scale(1.1);
+  background: var(--ifm-color-primary) !important;
+}
+
+/* Image zoom on hover */
+.markdown img {
+  transition: all 0.3s ease;
+  border-radius: var(--ifm-global-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.markdown img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.2);
+  cursor: zoom-in;
+}
+
+/* Animated gradient text for headings */
+.gradient-text {
+  background: linear-gradient(135deg, #2563eb, #7c3aed, #ec4899);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
+}
+
+/* Loading skeleton for async content */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: var(--ifm-global-radius);
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+[data-theme='dark'] .skeleton {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+}
+
+/* Tooltip enhancement */
+[data-tooltip] {
+  position: relative;
+  cursor: help;
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  background: var(--ifm-color-primary-darkest);
+  color: white;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
 /* Print styles */
 @media print {
   .navbar,
@@ -405,5 +573,25 @@ blockquote {
   .pagination-nav,
   .table-of-contents {
     display: none;
+  }
+
+  .markdown img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+}
+
+/* Responsive improvements */
+@media screen and (max-width: 576px) {
+  .markdown h1 {
+    font-size: 2rem;
+  }
+
+  .markdown h2 {
+    font-size: 1.5rem;
+  }
+
+  .markdown h3 {
+    font-size: 1.25rem;
   }
 }
